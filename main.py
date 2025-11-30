@@ -29,7 +29,7 @@ async def init_db():
         await db.commit()
 
 @mcp.tool
-async def add_expense(date, amount, category, subcategory='', note=''):
+async def add_expense(date, amount, category: str, subcategory='', note=''):
     """Add a new expense entry to database"""
     async with aiosqlite.connect(db_uri(), uri=True) as db:
         cursor = await db.execute(
